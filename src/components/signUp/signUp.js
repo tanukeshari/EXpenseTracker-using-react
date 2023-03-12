@@ -1,7 +1,7 @@
-import { useState, useRef, Fragment} from 'react';
- import Alert from 'react-bootstrap/Alert';
-import { NavLink ,useNavigate} from 'react-router-dom';
-import classes from './SignUp.module.css';
+ import { useState, useRef, Fragment} from 'react';
+
+    import { NavLink ,useNavigate} from 'react-router-dom';
+    import classes from './SignUp.module.css';
     
     
     
@@ -26,7 +26,7 @@ import classes from './SignUp.module.css';
         else {    
           enteredConfirmPassword = confirmPasswordInputRef.current.value;
           if(enteredPassword !== enteredConfirmPassword){
-            return <Alert key='danger' variant='danger'>'Check Login details'</Alert>
+            return alert('Check Login details')
           };  
         }
         // console.log(enteredPassword, enteredConfirmPassword)
@@ -41,6 +41,7 @@ import classes from './SignUp.module.css';
     } else {
       url = 'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyB7YQFYYb38RQ3WyQeXcvIF48ZpxoEJKK8'
     }
+    
         fetch(url, {
           method: 'POST',
           body: JSON.stringify({
@@ -69,9 +70,10 @@ import classes from './SignUp.module.css';
         })
         .then((data) => {   
           if(data){
-          console.log('sign up successful')
+          console.log('sign up successful',data)
           history('/welcome')
-          return alert('Success');
+          localStorage.setItem("token" , data.idToken);
+          return  alert('Success');
           }                   
         })
         .catch((err) => {
