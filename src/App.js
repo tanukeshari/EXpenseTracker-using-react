@@ -1,15 +1,16 @@
 import React, { Fragment } from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-
-import signUp from './components/signUp/signUp';
+import SignUp from './components/SignUp/SignUp';
 import Header from './components/Header/Header';
+import Welcome from "./components/pages/Welcome";
 
 var router = createBrowserRouter( [
   {
     path: '/',
     element: <Header/>,
     children: [
-      { path: '/', element: <signUp/> },
+      { path: '/', element: <SignUp/> },
+      {path:'/welcome', element:<Welcome/>}
     ],
   },
 ]);
