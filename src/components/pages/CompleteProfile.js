@@ -1,4 +1,4 @@
-import React ,{ Fragment, useRef } from 'react';
+import React ,{ Fragment, useEffect, useRef ,useState} from 'react';
 import axios from "axios";
 import classes from "./CompleteProfile.module.css";
 
@@ -6,6 +6,23 @@ function CompleteProfile(props) {
    
     const fullName = useRef();
     const photourl = useRef();
+    const [initialData,setInitialData] = useState({fullName:'',photoUrl:''});
+
+    useEffect(()=>{
+        getSavedData();
+    },[]);
+
+    async function getSavedData(){
+        let token= localStorage.getItem('token');
+        const res = await axios.post('https://identitytoolkit.googleapis.com/v1/accounts:lookup?key=AIzaSyB7YQFYYb38RQ3WyQeXcvIF48ZpxoEJKK8',{
+            idToken: token,
+          });
+      console.log( res)
+      setInitialData({ fullName: res.data.users[0].displayName,
+                    photoUrl: res.data.users[0].photoUrl});
+    
+        
+    }
 
     const profileSubmitHandler = async (e) => {
         e.preventDefault();
@@ -14,8 +31,10 @@ function CompleteProfile(props) {
         const enteredphotourl = photourl.current.value;
         
 
-        let token = localStorage.getItem('token')
+        let token = localStorage.getItem('token');
 
+        
+        
         try {
             const res = await axios.post(
        "https://identitytoolkit.googleapis.com/v1/accounts:update?key=AIzaSyB7YQFYYb38RQ3WyQeXcvIF48ZpxoEJKK8",
@@ -52,12 +71,12 @@ function CompleteProfile(props) {
                     <div className={classes.left}>
                         <img src="https://cdn-icons-png.flaticon.com/512/25/25231.png" alt='name'/>
                         <div className={classes.fullName}>Full Name : </div>
-                        <input type="text" ref={fullName} required/>
+                        <input type="text" ref={fullName}  defaultValue={initialData.fullName}required/>
                     </div>
                     <div className={classes.right}>
                         <img src="https://cdn-icons-png.flaticon.com/512/2301/2301129.png" alt='profile url'/>
                         <div className={classes.photourl}>Profile Photo url : </div>
-                        <input type="text" ref={photourl} required/>
+                        <input type="text" ref={photourl} defaultValue={initialData.photoUrl} required/>
                     </div>
                 </div>
                     <button onClick={profileSubmitHandler} className={classes.update} type="submit">
