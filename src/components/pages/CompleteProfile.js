@@ -79,9 +79,7 @@ function CompleteProfile(props) {
                         <input type="text" ref={photourl} defaultValue={initialData.photoUrl} required/>
                     </div>
                 </div>
-                    <button onClick={profileSubmitHandler} className={classes.update} type="submit">
-                        Update
-                    </button>
+                    <button onClick={profileSubmitHandler} className={classes.update} type="submit"> Update</button>
                 </div>
              </div>
             </form>

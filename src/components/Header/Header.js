@@ -1,10 +1,14 @@
 import React from 'react';
-import { NavLink, Outlet } from 'react-router-dom';
+import { NavLink, Outlet, useNavigate } from 'react-router-dom';
 import classes from './Header.module.css';
 
 
 const MainNavigation = () => {
-
+  const history = useNavigate();
+  const loginHandler = ()=>{
+    //setLogin(true)
+    history('/')
+  }
   return (
     <React.Fragment>
     <header className={classes.header}>
@@ -18,7 +22,7 @@ const MainNavigation = () => {
           <li><NavLink>About US</NavLink></li>
           
           <li>
-            <button>Login</button>
+            <button onClick={loginHandler}>Login</button>
           </li>
         </ul>
       </nav>
