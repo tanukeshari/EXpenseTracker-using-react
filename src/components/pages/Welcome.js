@@ -6,8 +6,9 @@ function Welcome(props) {
     return (
         <div>
            <h1>Welcome to Expense Tracker APP</h1> 
-           <div >Your profile is incomplete
-            <NavLink to='/completeprofile'>completeprofile</NavLink>
+           <div style={{'backgroundColor': 'rgba(0, 0, 0, 0.2)',
+  'padding': '20px'}}>Your profile is incomplete...
+            <NavLink to='/completeprofile'>CompleteProfile Now</NavLink>
            </div>
         </div>   
     );

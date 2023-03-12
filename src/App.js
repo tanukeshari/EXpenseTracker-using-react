@@ -7,6 +7,7 @@ import Welcome from "./components/pages/Welcome";
 import CompleteProfile from './components/pages/CompleteProfile';
 import VerifyEmail from "./components/pages/VerifyEmail";
 import { AuthContextProvider } from "./store/Auth-Context";
+import ForgotPassword from "./components/pages/ForgotPassword";
 
 var router = createBrowserRouter( [
   {
@@ -17,6 +18,7 @@ var router = createBrowserRouter( [
       {path:'/welcome', element:<Welcome/>},
       { path: "/completeprofile", element: <CompleteProfile/> },
       { path: "/verifyemail", element: <VerifyEmail/> },
+      { path: "/forgotpassword", element: <ForgotPassword/> },
     ],
   },
 ]);

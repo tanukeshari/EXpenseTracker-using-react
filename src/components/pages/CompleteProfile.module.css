@@ -41,7 +41,7 @@
     justify-content: center;
     width:max-content;
     height:fit-content;
-    padding: 8px 11px;
+    
 }
 
 
@@ -66,14 +66,7 @@
 font-size: 24px;
 font-weight: 600;
 }
-.cancel{
-color: rgb(244, 92, 92);
-border-color: rgb(245, 72, 72);
-border-radius: 4px;
-padding: 8px 11px;
-cursor: pointer;
-margin-right: 273px;
-}
+
 
 .input{
     width: 80%;
@@ -105,15 +98,4 @@ margin-right: 10px;
 }
 .photourl{
     margin-right: 10px;
-}
-
-.update{
-    background-color: rgb(53, 126, 121);
-    margin-bottom: 20px;
-    align-items: start;
-    margin-left: -850px;
-    padding: 8px 11px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
 }
