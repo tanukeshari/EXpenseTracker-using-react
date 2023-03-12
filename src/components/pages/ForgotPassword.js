@@ -14,7 +14,7 @@ function ForgotPassword(props) {
         const email = emailInputRef.current.value;
 
         try {
-            const res = await axios.post('https://identitytoolkit.googleapis.com/v1/accounts:sendOobCode?key=AIzaSyDdFFH3PYqzMJ8Frau8Bcz5lS2GLl8LH-Q'
+            const res = await axios.post('https://identitytoolkit.googleapis.com/v1/accounts:sendOobCode?key=AIzaSyB7YQFYYb38RQ3WyQeXcvIF48ZpxoEJKK8'
             ,{
                 requestType: 'PASSWORD_RESET',
                 email: email,

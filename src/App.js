@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 import SignUp from './components/SignUp/SignUp';
@@ -8,6 +8,7 @@ import CompleteProfile from './components/pages/CompleteProfile';
 import VerifyEmail from "./components/pages/VerifyEmail";
 import { AuthContextProvider } from "./store/Auth-Context";
 import ForgotPassword from "./components/pages/ForgotPassword";
+import Expenses from "./components/pages/Expenses";
 
 var router = createBrowserRouter( [
   {
@@ -19,6 +20,7 @@ var router = createBrowserRouter( [
       { path: "/completeprofile", element: <CompleteProfile/> },
       { path: "/verifyemail", element: <VerifyEmail/> },
       { path: "/forgotpassword", element: <ForgotPassword/> },
+      {path:'/expenses',element:<Expenses/>}
     ],
   },
 ]);

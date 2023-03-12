@@ -1,5 +1,4 @@
 import { useState, useRef, Fragment,useContext} from 'react';
-
 import { NavLink ,useNavigate} from 'react-router-dom';
 import classes from './SignUp.module.css';
 import AuthContext from '../../store/Auth-Context';
@@ -39,9 +38,9 @@ const Signup = () => {
  setLoading(true);
  let url;
     if (isLogin) {
-      url='https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyDdFFH3PYqzMJ8Frau8Bcz5lS2GLl8LH-Q'
+      url='https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyB7YQFYYb38RQ3WyQeXcvIF48ZpxoEJKK8'
     } else {
-      url = 'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyDdFFH3PYqzMJ8Frau8Bcz5lS2GLl8LH-Q'
+      url = 'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyB7YQFYYb38RQ3WyQeXcvIF48ZpxoEJKK8'
     }
 
     fetch(url, {

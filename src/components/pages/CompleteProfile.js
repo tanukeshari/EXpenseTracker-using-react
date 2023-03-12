@@ -16,7 +16,7 @@ function CompleteProfile(props) {
 
     async function getSavedData(){
         let token= localStorage.getItem('token');
-        const res = await axios.post('https://identitytoolkit.googleapis.com/v1/accounts:lookup?key=AIzaSyDdFFH3PYqzMJ8Frau8Bcz5lS2GLl8LH-Q',{
+        const res = await axios.post('https://identitytoolkit.googleapis.com/v1/accounts:lookup?key=AIzaSyB7YQFYYb38RQ3WyQeXcvIF48ZpxoEJKK8',{
             idToken: token,
           });
       console.log( res)
@@ -42,7 +42,7 @@ function CompleteProfile(props) {
         
         try {
             const res = await axios.post(
-       "https://identitytoolkit.googleapis.com/v1/accounts:update?key=AIzaSyDdFFH3PYqzMJ8Frau8Bcz5lS2GLl8LH-Q",
+       "https://identitytoolkit.googleapis.com/v1/accounts:update?key=AIzaSyB7YQFYYb38RQ3WyQeXcvIF48ZpxoEJKK8",
        {
          idToken: token,
          displayName: enteredFullName,

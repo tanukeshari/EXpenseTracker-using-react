@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+//import { useNavigate } from 'react-router-dom';
 
 
 
@@ -18,7 +18,7 @@ export const AuthContextProvider = (props) => {
   const [token, setToken] = useState(null);
   //const[isLoggedIn,setIsLoggedIn] = useState(false)
   // const {user,setUser}= useState(null);
-
+  
   const userIsLoggedIn = !!(localStorage.getItem('token'));
 
   // const addUser =(email)=>{
@@ -37,6 +37,7 @@ export const AuthContextProvider = (props) => {
    
     localStorage.removeItem('token');
     localStorage.removeItem('kodurusravani813@gmail.com')
+    // history('/')
   }
 
   
