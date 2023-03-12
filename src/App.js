@@ -6,6 +6,7 @@ import Header from './components/Header/Header';
 import Welcome from "./components/pages/Welcome";
 import CompleteProfile from './components/pages/CompleteProfile';
 import VerifyEmail from "./components/pages/VerifyEmail";
+import { AuthContextProvider } from "./store/Auth-Context";
 
 var router = createBrowserRouter( [
   {
@@ -21,9 +22,9 @@ var router = createBrowserRouter( [
 ]);
 function App() {
   return (
-    <Fragment>
+    <AuthContextProvider>
       <RouterProvider router={router} />
-    </Fragment>
+    </AuthContextProvider>
   );
 }
 

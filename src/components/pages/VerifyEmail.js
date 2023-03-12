@@ -1,10 +1,19 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import axios from 'axios';
 import { Container } from 'react-bootstrap';
+import AuthContext from '../../store/Auth-Context';
+import { useNavigate } from 'react-router-dom';
 
 
 function VerifyEmail(props) {
+    const authCtx=useContext(AuthContext);
+    const history=useNavigate();
+    const logoutHandler=()=>{
+        authCtx.logout();
+        history('/');
+        localStorage.removeItem('userEmail')
+    }
     //const[notification,setNotification] = useState('Please Verify your email to proceed')
     const emailConfirmationHandler= async()=>{
         try{
@@ -22,10 +31,12 @@ function VerifyEmail(props) {
         }
     }
     return (
-        <Container className=''>
+        <Container style={{backgroundcolor:'blue'}}>
            <h2>EMAIL CONFIRMATION</h2> 
-           <Button className="me-2" variant='info' onClick={emailConfirmationHandler}>Verify</Button>
-           
+           <div>
+            <Button variant='outline-info' onClick={emailConfirmationHandler}>Verify</Button>
+            <Button onClick={logoutHandler}>Logout</Button>
+           </div>
         </Container>
     );
 }

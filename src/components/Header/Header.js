@@ -1,9 +1,12 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { NavLink, Outlet, useNavigate } from 'react-router-dom';
+import AuthContext from '../../store/Auth-Context';
 import classes from './Header.module.css';
 
 
 const MainNavigation = () => {
+  const authCtx = useContext(AuthContext);
+  const isLoggedIn= authCtx.isLoggedIn;
   const history = useNavigate();
   const loginHandler = ()=>{
     //setLogin(true)
@@ -22,7 +25,7 @@ const MainNavigation = () => {
           <li><NavLink>About US</NavLink></li>
           
           <li>
-            <button onClick={loginHandler}>Login</button>
+            {!isLoggedIn?(<button onClick={loginHandler}>Login</button>):<button onClick={authCtx.logout}>Logout</button>}
           </li>
         </ul>
       </nav>
