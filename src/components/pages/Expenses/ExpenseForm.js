@@ -1,7 +1,9 @@
-import React ,{Fragment,useRef} from 'react';
-import {Form, Button,Row,Col, Container} from 'react-bootstrap'
+import React ,{Fragment,useContext,useRef} from 'react';
+import {Form, Button,Row,Col, Container} from 'react-bootstrap';
+import ExpenseContext from '../../../store/Expense-Context';
 
 function ExpenseForm(props) {
+    const expCtx=useContext(ExpenseContext);
     const amountInputRef=useRef();
     const descriptionInputRef=useRef();
     const categoryInputRef= useRef();
@@ -16,32 +18,33 @@ function ExpenseForm(props) {
         //we get expenses data
         //can save in an array
         console.log(expenseData)
-        props.setExpensesData((data)=> [...data,expenseData]);
+        expCtx.postExpenses(expenseData);
     }
     return (
-        <Container className='p-3 my-3  text-white' style={{backgroundColor:'#b3adba'}}>
+        <Container className='p-3 my-3  text-white' style={{backgroundColor:'#22709b'}}>
             
             <Form onSubmit={submitHandler} id='expenses'>
                 
                 <Row>
+                    <Col className='form-control justify content' >
+                        <textarea style={{height: '25px' }}
+                        type="text"
+                        placeholder="Description of Expense"
+                        name="Description"
+                        ref={descriptionInputRef}
+                        required>
+                    </textarea>
+                    </Col>
                     <Col className='form-control'>
                         <input 
                         type="number"
-                        placeholder="Amount"
+                        placeholder="Amount Spent"
                         name="Amount"
                         ref={amountInputRef}
                         required>
                         </input>
                     </Col>
-                <Col className='form-control' >
-                    <textarea style={{height: '25px' }}
-                    type="text"
-                    placeholder="Description"
-                    name="Description"
-                    ref={descriptionInputRef}
-                    required>
-                </textarea>
-                </Col>
+                
                 <Col className='form-control'>
                     <select
                     ref={categoryInputRef}
@@ -55,7 +58,7 @@ function ExpenseForm(props) {
                 </Col>
                 
                 
-                <Col className='mt-5'>
+                <Col >
                 <Button type='submit' variant="success">Add New Expense
 
                 </Button>

@@ -8,8 +8,8 @@ function Expenses() {
     return (
         <Fragment>
             <section>
-                <ExpenseForm expensesData={expensesData} setExpensesData={setExpensesData} />
-                <ExpenseTable expensesData={expensesData} />
+                <ExpenseForm  />
+                <ExpenseTable />
             </section>
         </Fragment>
     );
