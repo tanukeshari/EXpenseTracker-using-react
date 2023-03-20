@@ -2,11 +2,15 @@ import React, { useContext } from 'react';
 import { NavLink, Outlet, useNavigate } from 'react-router-dom';
 import AuthContext from '../../store/Auth-Context';
 import classes from './Header.module.css';
+import { useDispatch, useSelector } from "react-redux";
+import { authActions } from '../../store/AuthSlicer';
 
 
 const MainNavigation = () => {
-  const authCtx = useContext(AuthContext);
-  const isLoggedIn= authCtx.isLoggedIn;
+  //const authCtx = useContext(AuthContext);
+  //const isLoggedIn= authCtx.isLoggedIn;
+  const dispatch = useDispatch();
+  const idToken = useSelector(state => state.auth.idToken); 
   const history = useNavigate();
   const loginHandler = ()=>{
     //setLogin(true)
@@ -25,7 +29,9 @@ const MainNavigation = () => {
           <li><NavLink>About US</NavLink></li>
           
           <li>
-            {!isLoggedIn?(<button onClick={loginHandler}>Login</button>):<button onClick={authCtx.logout}>Logout</button>}
+            {!idToken?(<button onClick={loginHandler}>Login</button>):<button onClick={()=>{
+              dispatch(authActions.logout());
+            }}>Logout</button>}
           </li>
         </ul>
       </nav>

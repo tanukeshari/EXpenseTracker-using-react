@@ -1,9 +1,13 @@
-import React ,{useEffect,useContext,useRef} from 'react';
+import React ,{useEffect,useRef} from 'react';
 import {Form, Button,Row,Col, Container} from 'react-bootstrap';
-import ExpenseContext from '../../../store/Expense-Context';
+//import ExpenseContext from '../../store/Expense-Context';
+import { useDispatch } from 'react-redux';
+import { editExpense, postExpenses } from './ExpenseRequests';
+
 
 function ExpenseForm(props) {
-    const expCtx=useContext(ExpenseContext);
+    //const expCtx=useContext(ExpenseContext);
+    const dispatch = useDispatch();
     const amountInputRef=useRef();
     const descriptionInputRef=useRef();
     const categoryInputRef= useRef();
@@ -18,7 +22,8 @@ function ExpenseForm(props) {
         //we get expenses data
         //can save in an array
         console.log(expenseData)
-        expCtx.postExpenses(expenseData);
+        //expCtx.postExpenses(expenseData);
+        postExpenses(expenseData,dispatch);
         //setting to null values after posting expense
         amountInputRef.current.value = '';
         descriptionInputRef.current.value = '';
@@ -27,7 +32,7 @@ function ExpenseForm(props) {
     };
 
     const editHandler = () => {
-        expCtx.setEditing(false);
+        //expCtx.setEditing(false);
         
         const expenseData = {
             Amount: amountInputRef.current.value,
@@ -35,8 +40,9 @@ function ExpenseForm(props) {
             Category: categoryInputRef.current.value,
           };
       
-          expCtx.editExpenses(expCtx.editExp.id,expenseData);
-          
+          //expCtx.editExpenses(expCtx.editExp.id,expenseData);
+          editExpense(props.editExp.id,expenseData,dispatch);
+          alert('expense successfully edited')
           amountInputRef.current.value = '';
           descriptionInputRef.current.value = '';
           categoryInputRef.current.value= ''; 
@@ -44,17 +50,17 @@ function ExpenseForm(props) {
     }
 
     useEffect(() => {
-        amountInputRef.current.value = expCtx.editExp.expense?.Amount || '';
-        descriptionInputRef.current.value = expCtx.editExp.expense?.Description || '';
-        categoryInputRef.current.value= expCtx.editExp.expense?.Category || '';
-      }, [expCtx.editExp]);
+        amountInputRef.current.value = props.editExp.expense?.Amount || '';
+        descriptionInputRef.current.value = props.editExp.expense?.Description || '';
+        categoryInputRef.current.value= props.editExp.expense?.Category || '';
+      }, [props.editExp]);
     return (
         <Container className='p-3 my-3  text-white' style={{backgroundColor:'#22709b'}}>
             
-            <Form  id='expenses'>
+            <Form  id='expenses' style={{backgroundColor:'#22709b'}} >
                 
                 <Row>
-                    <Col className='form-control justify content' >
+                    <Col className='form-control justify content' style={{margin:'1rem'}}>
                         <textarea style={{height: '25px' }}
                         type="text"
                         placeholder="Description of Expense"
@@ -63,7 +69,7 @@ function ExpenseForm(props) {
                         required>
                     </textarea>
                     </Col>
-                    <Col className='form-control'>
+                    <Col className='form-control' style={{margin:'1rem'}}>
                         <input 
                         type="number"
                         placeholder="Amount Spent"
@@ -73,7 +79,7 @@ function ExpenseForm(props) {
                         </input>
                     </Col>
                 
-                <Col className='form-control'>
+                <Col className='form-control' style={{margin:'1rem'}}>
                     <select
                     ref={categoryInputRef}
                     name="Category"
@@ -87,8 +93,8 @@ function ExpenseForm(props) {
                 
                 
                 <Col >
-                {!expCtx.editing && <Button onClick={()=>submitHandler()} type='submit' variant="success" >ADD</Button>}
-                {expCtx.editing && <Button onClick={()=>editHandler()}>Update</Button>}
+                {!props.update && <Button style={{margin:'1rem'}} onClick={()=>submitHandler()} type='submit' variant="success" >ADD</Button>}
+                {props.update && <Button  style={{margin:'1rem'}} onClick={()=>editHandler()}>Update</Button>}
                 </Col>
                 </Row>
             </Form>
