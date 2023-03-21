@@ -1,12 +1,26 @@
-import {configureStore} from '@reduxjs/toolkit';
+import { createStoreHook } from 'react-redux';
+import { createStore } from 'redux';
 
-import authSlice from './AuthSlicer';
-import expensesSlice from './ExpenseSlicer';
+// import authSlice from './AuthSlicer';
+// import expensesSlice from './ExpenseSlicer';
 
-const store = configureStore({
-    reducer:{auth:authSlice.reducer,
-            expenses:expensesSlice.reducer},
-});
+const counterReducer = (state={ counter :0 }, action) =>{
+    if (action.type === 'increment') {
+        return{
 
-export default store;
+counter : state.counter +1
+        }
+      }
+      
+      if (action.type=== 'decrement'){
+ return {
  
+    counter: state.counter -1 ,
+
+ };
+}
+return state;
+};
+ const store = createStore(counterReducer);
+
+ export default store;
