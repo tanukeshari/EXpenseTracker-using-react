@@ -8,9 +8,9 @@ export async function getExpenses(dispatch) {
       for (let key in res.data) {
         data.push({id:key, ...res.data[key]});
         sum += +res.data[key].Amount;
-        //  setExpenses([])
-        //  setExpenses((prev)=>[...prev, { id: key, ...res.data[key]}])
-    }
+        // setExpenses([])
+          //setExpenses((prev)=>[...prev, { id: key, ...res.data[key]}])
+     }
     dispatch(expensesActions.setExpenses({ data: data, total: sum}));
 }
 
