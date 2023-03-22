@@ -1,9 +1,10 @@
 import { createStoreHook } from 'react-redux';
 import { createStore } from 'redux';
-
+import { createSlice } from '@reduxjs/toolkit';
 // import authSlice from './AuthSlicer';
 // import expensesSlice from './ExpenseSlicer';
 
+const initiaState = { counter : 0 , showCounter: true };
 const counterReducer = (state={ counter :0 }, action) =>{
     if (action.type === 'increment') {
         return{

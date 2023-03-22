@@ -9,8 +9,9 @@ const Counter = () => {
   return (
     <main className={classes.counter}>
       <h1>Redux Counter</h1>
-      <div className={classes.value}>{counter}</div>
-      <button onClick={toggleCounterHandler}>Toggle Counter</button>
+      <div className={classes.value}>{this.props.counter}</div>
+      <button onClick={this.incrementHandler.bind()}>increment</button>
+      <button onClick={this.decrementHandler.bind}>decrement</button>
     </main>
   );
 };
