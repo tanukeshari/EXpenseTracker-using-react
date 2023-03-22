@@ -1,3 +1,4 @@
+    
     import { useState, useRef, Fragment,useContext} from 'react';
 
     import { NavLink ,useNavigate} from 'react-router-dom';
@@ -128,7 +129,7 @@
             <NavLink to ='/forgotpassword' className={classes.forgot}>Forgot Password</NavLink>
             <div className={classes.actions}>
               {loading && <p>Sending request...</p> }
-              {!loading && <button>{isLogin ? "Login" : "Create Account"}</button>}
+              {!loading && <button id='btn'>{isLogin ? "Login" : "Create Account"}</button>}
               <button
                 type="button"
                 className={classes.toggle} onClick={()=> (setIsLogin(!isLogin))}>

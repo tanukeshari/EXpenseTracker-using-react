@@ -3,6 +3,7 @@ import React, {   useEffect } from 'react';
 import { Container ,Button} from 'react-bootstrap';
 import { useDispatch, useSelector } from "react-redux";
 import { deleteExpanse, getExpenses } from "./ExpenseRequests";
+import {CSVLink} from 'react-csv';
 
 function ExpenseTable(props) {
     //const expCtx = useContext(ExpenseContext);
@@ -32,9 +33,14 @@ function ExpenseTable(props) {
                 {total > 10000 && (
                 <Button variant='success' style={{margin:'1rem'}}>Unlock Premium</Button>
                 )}
+                {expenses && 
+                (<CSVLink data={expenses}>
+                    <Button variant='success' style={{margin:'1rem'}}>Download Expenses</Button>
+                </CSVLink>)}
+            
             </div>
             
-            <div >
+            <div id='whiteborder'>
                 {expenses.map((expense, index) => (
                 <div
                     className=" d-flex justify-content-around mx-5 p-1 shadow" 
