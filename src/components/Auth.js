@@ -1,6 +1,8 @@
+import { useDispatch } from 'react-redux';
 import classes from './Auth.module.css';
 
 const Auth = () => {
+  const Dispatch = useDispatch();
   return (
     <main className={classes.auth}>
       <section>
