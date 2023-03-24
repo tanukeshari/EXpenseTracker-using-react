@@ -1,4 +1,4 @@
-import { useDispatch } from 'react-redux';
+import { useDispatch  } from 'react-redux';
 
 import { cartActions } from '../../store/cartSlice';
 import Card from '../UI/Card';
@@ -6,12 +6,13 @@ import classes from './ProductItem.module.css';
 
 const ProductItem = (props) => {
   const dispatch = useDispatch();
+ 
 
   const { title, price, description, id } = props;
 
-  const addToCartHandler = () => {
+  const addToCartHandler = () => {  //here we get data of cart,we can send to firebase 
     dispatch(cartActions.addItemToCart({
-      id,       //key and val es6 id: id,..
+      id,       //key and val es6 id: id,.. will point automatically
       title,
       price,
     }
