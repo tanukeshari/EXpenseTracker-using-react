@@ -17,3 +17,10 @@ const themeSlicer = createSlice({
 export const themeActions = themeSlicer.actions;
 
 export default themeSlicer;
+
+
+
+
+
+
+

@@ -1,14 +1,11 @@
-import {configureStore} from '@reduxjs/toolkit';
+import { configureStore } from "@reduxjs/toolkit";
 
-import authSlice from './AuthSlicer';
-import expensesSlice from './ExpenseSlicer';
-import themeSlicer from "./ThemeSlicer";
+import uiSlice from "./uiSlice";
 
 const store = configureStore({
-    reducer:{auth:authSlice.reducer,
-            expenses:expensesSlice.reducer,
-            theme: themeSlicer.reducer,},
+    reducer:{
+        ui :uiSlice.reducer
+    }
 });
 
 export default store;
- 
