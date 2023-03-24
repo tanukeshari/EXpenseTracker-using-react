@@ -6,9 +6,10 @@ import Products from './components/Shop/Products';
 
 function App() {
   const showCart = useSelector(state=> state.ui.cartIsVisible);
+  //const cartItems=useSelector(state=>state.cart.items) //for conditional rendering
   return (
-    <Layout>
-      {showCart && <Cart /> }
+    <Layout> 
+      { showCart && <Cart /> } 
       <Products />
     </Layout>
   );
