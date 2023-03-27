@@ -9,7 +9,7 @@ describe ('Greeting component',()=>{
         const helloWorldElement=screen.getByText('hello World !');
         expect (helloWorldElement).toBeInTheDocument();
     })
-}
+})
 
 
 
